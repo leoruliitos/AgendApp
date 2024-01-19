@@ -1,5 +1,6 @@
 package cl.leonelab.agendapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -51,6 +52,19 @@ class FetchingActivity : AppCompatActivity() {
                     }
                     val cAdapter = ContactAdapter(contactList)
                     contactRecycleView.adapter = cAdapter
+
+                    cAdapter.setOnItemClickListener(object : ContactAdapter.onItemClickListener{
+                        override fun onItemClick(position: Int) {
+
+                            val intent = Intent(this@FetchingActivity, ContactDetailsActivity::class.java)
+                            //put extras
+                            intent.putExtra("contactId", contactList[position].contactId)
+                            intent.putExtra("contactName", contactList[position].contactName)
+                            intent.putExtra("contactTel", contactList[position].contactTel)
+                            intent.putExtra("contactEmail", contactList[position].contactEmail)
+                            startActivity(intent)
+                        }
+                    })
 
                     contactRecycleView.visibility = View.VISIBLE
                     tvLoadingData.visibility = View.GONE

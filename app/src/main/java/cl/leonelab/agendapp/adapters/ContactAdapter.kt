@@ -11,9 +11,17 @@ import cl.leonelab.agendapp.models.ContactModel
 class ContactAdapter(private val contactList: ArrayList<ContactModel>) :
     RecyclerView.Adapter<ContactAdapter.ViewHolder>(){
 
+    private lateinit var mListener: onItemClickListener
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+    fun setOnItemClickListener(clickListener: onItemClickListener){
+        mListener = clickListener
+
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.contact_list_item, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -24,9 +32,16 @@ class ContactAdapter(private val contactList: ArrayList<ContactModel>) :
     override fun getItemCount(): Int {
         return contactList.size
     }
-    class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView : View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
 
         val tvContactName : TextView = itemView.findViewById(R.id.tvContactName)
+
+        init{
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
+            }
+
+        }
     }
 
 }
