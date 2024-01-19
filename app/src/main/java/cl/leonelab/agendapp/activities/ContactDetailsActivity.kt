@@ -1,5 +1,6 @@
 package cl.leonelab.agendapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.CommonDataKinds.Email
@@ -34,6 +35,29 @@ class ContactDetailsActivity : AppCompatActivity() {
                 intent.getStringExtra("contactId").toString(),
                 intent.getStringExtra("contactName").toString(),
             )
+        }
+
+        btnDelete.setOnClickListener {
+            deleteRecord(
+                intent.getStringExtra("contactId").toString()
+            )
+        }
+    }
+
+    private fun deleteRecord(
+        id: String
+    ){
+        val dbRef = FirebaseDatabase.getInstance().getReference("Contacs").child(id)
+        val mCont = dbRef.removeValue()
+
+        mCont.addOnSuccessListener{
+            Toast.makeText(this, "Contacto eliminado..", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, FetchingActivity::class.java)
+            finish()
+            startActivity(intent)
+        }.addOnFailureListener{ error ->
+            Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_LONG).show()
         }
     }
 
