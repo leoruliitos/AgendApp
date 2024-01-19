@@ -1,11 +1,10 @@
-package cl.leonelab.agendapp
+package cl.leonelab.agendapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import cl.leonelab.agendapp.R
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +22,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnFetchData.setOnClickListener{
-
+            val intent = Intent(this, FetchingActivity::class.java)
+            startActivity(intent)
         }
     }
 }

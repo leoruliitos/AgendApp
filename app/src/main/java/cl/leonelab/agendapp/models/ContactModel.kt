@@ -1,4 +1,4 @@
-package cl.leonelab.agendapp
+package cl.leonelab.agendapp.models
 
 data class ContactModel (
     var contactId: String? = null,

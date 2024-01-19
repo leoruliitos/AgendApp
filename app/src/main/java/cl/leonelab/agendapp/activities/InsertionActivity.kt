@@ -1,11 +1,12 @@
-package cl.leonelab.agendapp
+package cl.leonelab.agendapp.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Email
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import cl.leonelab.agendapp.models.ContactModel
+import cl.leonelab.agendapp.R
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
