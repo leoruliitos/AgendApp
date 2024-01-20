@@ -111,7 +111,7 @@ class ContactDetailsActivity : AppCompatActivity() {
                 edtContactEmail.text.toString()
             )
 
-            Toast.makeText(applicationContext, "Employee Data Updated", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "Contacto actualizado...", Toast.LENGTH_LONG).show()
 
             //
             txtContactName.text = edtContactName.text.toString()

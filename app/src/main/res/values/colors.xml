@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--Colores personalizados -->
+    <color name="background_main">#FFEACB</color>
+    <color name="color_button">#F67459</color>
+    <color name="cv_color">#FF71D0DC</color>
+    <color name="update_background">#FFEFEFEF</color>
+    <color name="fetching_background">#FF185C91</color>
+    <color name="insertion_background">#FFDDF8BD</color>
+    <color name="btn_delete">#FFEA5A5A</color>
+    <color name="btn_actualizar">#FF3294E1</color>
+    <color name="btn_agregar">#FF4A8F4D</color>
 </resources>

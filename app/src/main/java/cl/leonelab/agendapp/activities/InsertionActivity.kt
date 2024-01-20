@@ -49,19 +49,23 @@ class InsertionActivity : AppCompatActivity() {
             edtEmail.error = "Ingrese su email"
         }
 
-        val contactId = dbRef.push().key!!
-        val contact = ContactModel(contactId, contactName, contactTel, contactEmail)
+        if(contactName.isNotEmpty() && contactTel.isNotEmpty() && contactEmail.isNotEmpty()){
 
-        dbRef.child(contactId).setValue(contact)
-            .addOnCompleteListener {
-                Toast.makeText(this, "Contacto registrado correctamente...", Toast.LENGTH_LONG).show()
-                edtName.text.clear()
-                edtTel.text.clear()
-                edtEmail.text.clear()
+            val contactId = dbRef.push().key!!
+            val contact = ContactModel(contactId, contactName, contactTel, contactEmail)
 
-            }.addOnFailureListener{err->
-                Toast.makeText(this,"Error ${err.message}", Toast.LENGTH_LONG).show()
-            }
+            dbRef.child(contactId).setValue(contact)
+                .addOnCompleteListener {
+                    Toast.makeText(this, "Contacto registrado correctamente...", Toast.LENGTH_LONG).show()
+                    edtName.text.clear()
+                    edtTel.text.clear()
+                    edtEmail.text.clear()
+
+                }.addOnFailureListener{err->
+                    Toast.makeText(this,"Error ${err.message}", Toast.LENGTH_LONG).show()
+                }
+        }
+
 
     }
 }
